@@ -1,4 +1,4 @@
-package model;
+package springfarmework.petclinic.model;
 
 public class Person {
 
