@@ -8,6 +8,7 @@ import springfarmework.petclinic.model.Vet;
 import springfarmework.petclinic.services.OwnerService;
 import springfarmework.petclinic.services.VetService;
 
+
 @Component
 public class DataLoader implements CommandLineRunner {
 
