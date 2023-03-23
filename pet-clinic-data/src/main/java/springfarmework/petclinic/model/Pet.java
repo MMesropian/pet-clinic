@@ -1,13 +1,26 @@
 package springfarmework.petclinic.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
 
-    private  String name;
+    @Column(name = "name")
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id")
     private PetType petType;
+
+    @ManyToOne
+    @JoinColumn(name = "owners_id")
     private Owner owner;
-    private LocalDate birthDay;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
     public String getName() {
         return name;
@@ -34,10 +47,10 @@ public class Pet extends BaseEntity {
     }
 
     public LocalDate getBirthDay() {
-        return birthDay;
+        return birthDate;
     }
 
     public void setBirthDay(LocalDate birthDay) {
-        this.birthDay = birthDay;
+        this.birthDate = birthDay;
     }
 }
