@@ -9,7 +9,6 @@ import springfarmework.petclinic.repositories.PetTypeRopositories;
 import springfarmework.petclinic.services.OwnerService;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
