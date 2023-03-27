@@ -2,6 +2,7 @@ package springfarmework.petclinic.services.map;
 
 import org.springframework.stereotype.Service;
 import springfarmework.petclinic.model.Owner;
+import springfarmework.petclinic.model.Pet;
 import springfarmework.petclinic.services.OwnerService;
 import springfarmework.petclinic.services.PetService;
 import springfarmework.petclinic.services.PetTypeService;
@@ -32,7 +33,6 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner save(Owner object) {
         if (object != null) {
-
             if (object.getPets() != null) {
                 object.getPets().forEach(pet -> {
                     if (pet.getPetType() != null) {
@@ -41,6 +41,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                         }
                     } else {
                         throw new RuntimeException("Pet type is required!");
+                    }
+                    if(pet.getId() ==  null) {
+                        Pet savedPet = petService.save(pet);
+                        pet.setId(savedPet.getId());
                     }
                 });
             }
